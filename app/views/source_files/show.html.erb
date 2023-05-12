@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Source file #<%= @the_source_file.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/source_files">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_source_file/<%= @the_source_file.id %>">
+          Delete source file
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Name
+      </dt>
+      <dd>
+        <%= @the_source_file.name %>
+      </dd>
+
+      <dt>
+        File name
+      </dt>
+      <dd>
+        <%= @the_source_file.file_name %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_source_file.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_source_file.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit source file
+    </h2>
+
+    <form action="/modify_source_file/<%= @the_source_file.id %>"  method="post" >
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name" value="<%= @the_source_file.name %>">
+      </div>
+
+      <div>
+        <label for="file_name_box">
+          File name
+        </label>
+
+        <input type="text" id="file_name_box" name="query_file_name" value="<%= @the_source_file.file_name %>">
+      </div>
+
+      <button>
+        Update source file
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

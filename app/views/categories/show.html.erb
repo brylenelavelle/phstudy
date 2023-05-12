@@ -1,0 +1,22 @@
+<h1>
+  <%= @the_category.name %> 
+</h1>
+
+<% @questions = Question.where(category_id: @the_category.id).all %>
+<form action="/test_questions/<%= @the_category.id %>" method="get">
+  <% @questions.each do |question| %>
+    <div>
+      <%= question.question %>
+    </div>
+    <% question.answers.each do |answer| %>
+      <div>
+        <input type="radio" id="<%= answer %>" name="answers[<%= question.id %>][]" value="<%= answer %>">
+        <label for="<%= answer %>">
+          <%= answer %>
+        </label>
+      </div>
+    <% end %>
+    <br>
+  <% end %>
+  <button type="submit">Submit</button>
+</form>

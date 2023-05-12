@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all source files
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new source file
+    </h2>
+
+    <form action="/insert_source_file" method="post">
+      <div>
+        <label for="name_box">
+          Name
+        </label>
+
+        <input type="text" id="name_box" name="query_name">
+      </div>
+
+      <div>
+        <label for="file_name_box">
+          File name
+        </label>
+
+        <input type="text" id="file_name_box" name="query_file_name">
+      </div>
+
+      <button>
+        Create source file
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Name
+        </th>
+
+        <th>
+          File name
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_source_files.each do |a_source_file| %>
+      <tr>
+        <td>
+          <%= a_source_file.id %>
+        </td>
+
+        <td>
+          <%= a_source_file.name %>
+        </td>
+
+        <td>
+          <%= a_source_file.file_name %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_source_file.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_source_file.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/source_files/<%= a_source_file.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

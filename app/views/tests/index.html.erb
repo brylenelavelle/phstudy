@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all tests
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new test
+    </h2>
+
+    <form action="/insert_test" method="post">
+      <div>
+        <label for="source_file_id_box">
+          Source file
+        </label>
+
+        <input type="text" id="source_file_id_box" name="query_source_file_id">
+      </div>
+
+      <div>
+        <label for="user_id_box">
+          User
+        </label>
+
+        <input type="text" id="user_id_box" name="query_user_id">
+      </div>
+
+      <button>
+        Create test
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Source file
+        </th>
+
+        <th>
+          User
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_tests.each do |a_test| %>
+      <tr>
+        <td>
+          <%= a_test.id %>
+        </td>
+
+        <td>
+          <%= a_test.source_file_id %>
+        </td>
+
+        <td>
+          <%= a_test.user_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_test.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_test.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/tests/<%= a_test.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

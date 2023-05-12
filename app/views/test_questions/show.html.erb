@@ -1,0 +1,116 @@
+<div>
+  <div>
+    <h1>
+      Test question #<%= @the_test_question.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/test_questions">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_test_question/<%= @the_test_question.id %>">
+          Delete test question
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Test
+      </dt>
+      <dd>
+        <%= @the_test_question.test_id %>
+      </dd>
+
+      <dt>
+        Question
+      </dt>
+      <dd>
+        <%= @the_test_question.question_id %>
+      </dd>
+
+      <dt>
+        Correct
+      </dt>
+      <dd>
+        <%= @the_test_question.correct %>
+      </dd>
+
+      <dt>
+        Category
+      </dt>
+      <dd>
+        <%= @the_test_question.category_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_test_question.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_test_question.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit test question
+    </h2>
+
+    <form action="/modify_test_question/<%= @the_test_question.id %>"  method="post" >
+      <div>
+        <label for="test_id_box">
+          Test
+        </label>
+
+        <input type="text" id="test_id_box" name="query_test_id" value="<%= @the_test_question.test_id %>">
+      </div>
+
+      <div>
+        <label for="question_id_box">
+          Question
+        </label>
+
+        <input type="text" id="question_id_box" name="query_question_id" value="<%= @the_test_question.question_id %>">
+      </div>
+
+      <div>
+        <input type="checkbox" id="correct_box" name="query_correct" value="1" <%= "checked" if @the_test_question.correct %>>
+
+        <label for="correct_box">
+            Correct
+        </label>
+      </div>
+
+      <div>
+        <label for="category_id_box">
+          Category
+        </label>
+
+        <input type="text" id="category_id_box" name="query_category_id" value="<%= @the_test_question.category_id %>">
+      </div>
+
+      <button>
+        Update test question
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

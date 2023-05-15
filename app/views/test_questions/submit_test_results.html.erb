@@ -1,0 +1,14 @@
+<h1>Your Test Results</h1>
+<p>Score: <%= @score %> out of 5 </p>
+<ol>
+  <% @questions.each_with_index do |question, index| %>
+    <li>
+      <strong>Question <%= index + 1 %>:</strong> <%= question %>
+      <br>
+      <strong>Correct Answer:</strong> <%= @correct_answers[index] %>
+      <br><br> <!-- Add an extra line break here -->
+    </li>
+  <% end %>
+</ol>
+
+<%= link_to 'Reset', reset_test_path, method: :post %>

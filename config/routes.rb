@@ -15,12 +15,16 @@ Rails.application.routes.draw do
   get("/test_questions/:path_id", { :controller => "test_questions", :action => "show" })
   
   # UPDATE
-  
-  post("/modify_test_question/:path_id", { :controller => "test_questions", :action => "update" })
+  post("/modify_test_question/:path_id", { :controller => "test_questions", :action => "submit_test" })
   
   # DELETE
   get("/delete_test_question/:path_id", { :controller => "test_questions", :action => "destroy" })
 
+  #post("/test_questions/:path_id", { :controller => "test_questions", :action => "reset_test" })
+  match '/reset_test', to: 'test_questions#reset_test', via: [:get, :post], as: 'reset_test'
+
+  post '/submit_test', to: 'test_questions#submit_test'
+  
   #------------------------------
 
   # Routes for the Source file resource:

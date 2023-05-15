@@ -8,7 +8,6 @@
  <% @list_of_categories.each do |a_category| %>
   <form action="/insert_test_question" method = "post">
   <input type ="hidden" name="question_ids" value = "<%= a_category.questions.ids %>">
-  <%= a_category.questions.ids %>
     <!-- Buttons for each category -->
     <button type="submit" class="btn btn-primary text-white custom-btn-size mx-3" style="background-color: #<%= "%06x" % (rand * 0xffffff) %>; border-color: #<%= "%06x" % (rand * 0xffffff) %>; padding: 50px 50px; font-size: 30px; width: 300px;">
       <%= a_category.name %>

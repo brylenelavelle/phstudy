@@ -6,14 +6,15 @@
   
  <div class="d-flex justify-content-center align-items-end" style="height: 5vh;">
  <% @list_of_categories.each do |a_category| %>
-  <form action="/insert_test_question/<%= a_category.id %>" method= "post">
+  <form action="/insert_test_question" method = "post">
+  <input type ="hidden" name="question_ids" value = "<%= a_category.questions.ids %>">
+  <%= a_category.questions.ids %>
     <!-- Buttons for each category -->
     <button type="submit" class="btn btn-primary text-white custom-btn-size mx-3" style="background-color: #<%= "%06x" % (rand * 0xffffff) %>; border-color: #<%= "%06x" % (rand * 0xffffff) %>; padding: 50px 50px; font-size: 30px; width: 300px;">
-      <a href="/categories/<%= a_category.id %>" class="text-white" style="text-decoration: none;"><%= a_category.name %></a>
+      <%= a_category.name %>
     </button>
+    </form>
   <% end %>
-</form>
 </div>
 
 </div>
-

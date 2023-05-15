@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post("/insert_test_question", { :controller => "test_questions", :action => "create" })
           
   # READ
-  get("/test_questions/:category_id", { :controller => "test_questions", :action => "index" })
+  get("/test_questions", { :controller => "test_questions", :action => "index" })
   
   get("/test_questions/:path_id", { :controller => "test_questions", :action => "show" })
   

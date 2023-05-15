@@ -1,8 +1,6 @@
 <h1>Test Questions</h1>
-
 <% @list_of_test_questions.each do |test_question| %>
   <div>
-    <h3><%= test_question.question.question %></h3>
-    <p>Correct Answer: <%= test_question.correct_answer %></p>
+    <h3><%= test_question.question %></h3>
   </div>
 <% end %>

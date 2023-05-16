@@ -39,33 +39,24 @@ class TestQuestionsController < ApplicationController
   end
 
   def submit_test
-    num_questions = params[:num_questions].to_i
-    test_questions = TestQuestion.includes(:question).where(id: params.values).to_a
-
     @score = 0
-    @correct_answers = []
-    @questions = []
 
-    num_questions.times do |i|
-      answer_key = params.keys.find { |k| k.include?("answer_#{i + 1}") }
-      next unless answer_key
-
-      test_question = test_questions.find { |tq| tq.id == answer_key.split("_").last.to_i }
-      user_answer = params[answer_key]
-
-      if user_answer == test_question.question.correct_answer
+    test_questions = TestQuestion.where(test_id: session[:user_id])
+    @list_of_test_questions = test_questions.map(&:question)
+  
+    @list_of_test_questions.each do |question|
+      user_answer = params["answer_#{question.id}"]
+      correct_answer = question.correct_answer
+  
+      if user_answer == correct_answer
         @score += 1
       end
-
-      @correct_answers << test_question.question.correct_answer
-      @questions << test_question.question.question
     end
-
-    render({ :template => "test_questions/submit_test_results" })
-  end
+  render({ :template => "test_questions/submit_test_results" })
+end
 
   def reset_test
-    session.delete(:path_id)
+    session[:path_id] = 0
     session.delete(:score)
     redirect_to "/test_questions", notice: "Test reset successfully."
   end

@@ -1,14 +1,18 @@
-<h1>Your Test Results</h1>
-<p>Score: <%= @score %> out of 5 </p>
-<ol>
-  <% @questions.each_with_index do |question, index| %>
-    <li>
-      <strong>Question <%= index + 1 %>:</strong> <%= question %>
-      <br>
-      <strong>Correct Answer:</strong> <%= @correct_answers[index] %>
-      <br><br> <!-- Add an extra line break here -->
-    </li>
-  <% end %>
-</ol>
+<div class="container">
+  <h1>Test Results</h1>
 
-<%= link_to 'Reset', reset_test_path, method: :post %>
+  <p class="score">Your score is <%= @score %></p>
+
+  <div class="summary">
+    <% @list_of_test_questions.each do |question| %>
+      <div class="question-container">
+        <h3 class="question"><%= question.question %></h3>
+        <p class="answer"><strong>Correct Answer:</strong> <%= question.correct_answer %></p>
+        <% user_answer = params["answer_#{question.id}"] %>
+        <p class="answer"><strong>Your Answer:</strong> <%= user_answer %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <%= link_to 'Reset', reset_test_path, method: :post, class: 'reset-button' %>
+</div>

@@ -5,14 +5,13 @@
     <h3><%= test_question.question.question %></h3>
   </div>
   <form action="/submit_test" method="post">
-  <input type = "hidden" name = "question_id" value = "<%= test_question.question.id%>">
+  <input type = "hidden" name = "question_id" value = "<%= test_question.question.id %>">
     <% answers = [test_question.question.correct_answer, test_question.question.wrong_answer_1, test_question.question.wrong_answer_2, test_question.question.wrong_answer_3].shuffle %>
     <% answers.each do |answer| %>
-      <input type="radio" name="answer_<%= test_question.id %>" value="<%= answer %>">
+      <input type="radio" name="answer_<%= test_question.question.id %>" value="<%= answer %>">
       <%= answer %>
       <br>
     <% end %>
   <% end %>
-  <input type="hidden" name="num_questions" value="<%= @list_of_test_questions.length %>">
   <button type="submit" name="submit_test">Submit</button>
 </form>

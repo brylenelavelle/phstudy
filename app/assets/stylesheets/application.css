@@ -307,3 +307,14 @@ h1 {
 .submit-button:hover {
   background-color: #ff0044;
 }
+
+/* Anatomy Button */
+.shorten-text {
+  max-width: 350px;
+  position: relative;
+  right: -20px;
+  bottom: -20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;    
+}
